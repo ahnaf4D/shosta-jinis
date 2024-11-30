@@ -1,0 +1,19 @@
+extends layouts/layout
+
+block content
+  .container.mt-5
+    h1.text-center.mb-4 Mini E-commerce Store
+    .row
+      each product in products
+        .col-md-4.mb-3
+          .card
+            img.w-25.card-img-top(src=product.image alt=product.title)
+            .card-body
+              h5.card-title= product.title
+              p.card-text $#{product.price}
+              a.btn.btn-primary(href=`/product/${product.id}`) View Details
+  .container.mt-5
+    if hasPrevPage
+      a.btn.btn-secondary(href=`/page/${currentPage - 1}`) Previous
+    if hasNextPage
+      a.btn.btn-secondary.float-end(href=`/page/${currentPage + 1}`) Next
