@@ -2,7 +2,7 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 const pug = require("pug");
-
+require('dotenv').config()
 // Load product data
 const products = require("./data/product.js");
 const { cart, addToCart } = require('./data/cart.js');
@@ -121,7 +121,7 @@ const server = http.createServer((req, res) => {
 });
 
 // Start the server
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
